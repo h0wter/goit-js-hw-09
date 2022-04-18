@@ -38,6 +38,7 @@ function onStartClick() {
   }
 
   changeHTML(addLeadingZero(convertMs(dateChoosen - Date.now())));
+
   const timer = setInterval(() => {
     dateDiff = dateChoosen - Date.now();
     if (dateDiff < 0) {

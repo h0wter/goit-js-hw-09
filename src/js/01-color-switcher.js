@@ -14,6 +14,8 @@ function onStartClick() {
     return;
   }
   isActive = true;
+  refs.start.setAttribute('disabled', 'true');
+  refs.stop.removeAttribute('disabled');
   refs.body.style.backgroundColor = getRandomHexColor();
   startInterval = setInterval(() => {
     refs.body.style.backgroundColor = getRandomHexColor();
@@ -23,6 +25,8 @@ function onStartClick() {
 function onStopClick() {
   clearInterval(startInterval);
   isActive = false;
+  refs.start.removeAttribute('disabled');
+  refs.stop.setAttribute('disabled', 'true');
 }
 
 function getRandomHexColor() {

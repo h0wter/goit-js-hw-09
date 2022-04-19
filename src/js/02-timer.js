@@ -5,6 +5,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 const refs = {
   startButton: document.querySelector('button[data-start]'),
+  textInput: document.querySelector('#datetime-picker'),
   textDays: document.querySelector('span[data-days]'),
   textHours: document.querySelector('span[data-hours]'),
   textMins: document.querySelector('span[data-minutes]'),
@@ -28,7 +29,7 @@ const options = {
   },
 };
 refs.startButton.addEventListener('click', onStartClick);
-refs.startButton.setAttribute('disabled', '');
+refs.startButton.setAttribute('disabled', 'true');
 flatpickr('input#datetime-picker', options);
 
 function onStartClick() {
@@ -38,7 +39,8 @@ function onStartClick() {
   }
 
   changeHTML(addLeadingZero(convertMs(dateChoosen - Date.now())));
-
+  refs.startButton.setAttribute('disabled', 'true');
+  refs.textInput.setAttribute('disabled', 'true');
   const timer = setInterval(() => {
     dateDiff = dateChoosen - Date.now();
     if (dateDiff < 0) {

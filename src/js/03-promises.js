@@ -10,11 +10,11 @@ function onFormSubmit(event) {
   event.preventDefault();
 
   const formData = {
-    delay: Number(refs.form.delay.value),
-    step: Number(refs.form.step.value),
-    amount: Number(refs.form.amount.value),
+    delay: Number(event.currentTarget.delay.value),
+    step: Number(event.currentTarget.step.value),
+    amount: Number(event.currentTarget.amount.value),
   };
-
+  refs.form.reset();
   for (let i = 0; i < formData.amount; i++) {
     createPromise(i + 1, formData.delay + formData.step * i)
       .then(({ position, delay }) => {
